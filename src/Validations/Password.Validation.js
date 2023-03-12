@@ -1,0 +1,20 @@
+const {check, validationResult}=require('express-validator')
+
+exports.PasswordValidation=[
+    check(
+        'Password',
+        "Please enter a password at least 6 character and contain At least one uppercase.At least one lower case.At least one special character. ",
+      )
+    .isLength({ min: 6 })
+    .matches(
+                /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$.!%*#?&]/,
+            ),
+    check('Password',"Password should not excceed more than 15 character")
+    .isLength({max:15}),
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty())
+          return res.status(422).json({errors: errors.array()});
+        next();
+      }
+]

@@ -1,0 +1,64 @@
+const mongoose=require('mongoose')
+const FAQ=mongoose.model('FAQ',{
+    Pet_Friendly:{
+        type:String,
+        require:true,
+        default:"yes"
+    },
+    Lease_time:{
+        type:String,
+        require: true,
+        default: "30",
+    },
+    Able_leave_before_leasePeriod:{
+        type:Boolean,
+        default:true
+    },
+    Need_to_Pay_Before_Move_In:{
+        type:Boolean,
+        default:true
+    },
+    Need_to_pay_Security_Deposite:{
+        type:Boolean,
+        default:true
+    },
+    How_to_Pay_rent_due:{
+        type:String,
+        default:"Via online portal"
+    },
+    Responsiblilites_For_Utilies:{
+        type:String,
+        default:"Tenant"
+    },
+    Water_Availablity:{
+        type:String,
+        default:"24/7"
+    },
+    Electricity_Availiblity:{
+        type:String,
+        default:"24/7"
+    },
+    ParkingForMotorCycle:{
+        type:Boolean,
+        default:true
+    },
+    ParkingForCar:{
+        type:Boolean,
+        default:false
+    },
+    Internet:{
+        type:String
+    },
+    Additional:{
+        type:String
+    },
+    RentId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'RentFloor'
+    },
+    OwnerId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'UserModel'
+    }
+})
+module.exports=FAQ
